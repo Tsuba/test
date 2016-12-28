@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-
+import { NgSwitch} from 'angular2/common';
 import { Hero } from './hero';
 
 @Component({
@@ -15,15 +15,30 @@ import { Hero } from './hero';
         {{secondOne}}
         <button (click)="change(secondOne)">Change</button>
       </div>
-      <div>
-        <h2 >{{hero.name}} details!</h2>
-        <div><label>id: </label>{{hero.id}}</div>
-        <div >
-          <label>name: </label>
-          <div>{{hero.name}}</div>
-          <button (click)="save(hero.name)">Save</button>
+      
+      <div [ngSwitch]="firstOne">
+        <div *ngSwitchCase="null">
+          <h2 >{{hero.name}} details!</h2>
+          <div><label>id: </label>{{hero.id}}</div>
+          <div >
+            <label>name: </label>
+            <div>{{hero.name}}</div>
+            <button (click)="save(hero.name)">Save</button>
+          </div>
         </div>
       </div>
+      <div [ngSwitch]="firstOne">
+        <div *ngSwitchCase="!null">
+          <h2 >{{hero.name}} details!</h2>
+          <div><label>id: </label>{{hero.id}}</div>
+          <div >
+            <label>name: </label>
+            <div>{{hero.name}}</div>
+            <button (click)="save(hero.name)">Save</button>
+          </div>
+        </div>
+      </div>
+      
     </div>
     </div>
 
@@ -52,6 +67,8 @@ export class HeroDetailComponent {
     else if(this.secondOne==null){
       this.secondOne = data
     }
+    console.log(this.firstOne);
     this.saved = true;
   }
 }
+
