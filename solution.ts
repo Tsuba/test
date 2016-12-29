@@ -28,7 +28,7 @@ import { Hero } from './hero';
           </div>
         </div>
       </div>
-      <div *ngIf="firstSelected">
+      <div *ngIf="firstSelected || secondSelected">
       <div [ngSwitch]="secondSelected">
         <div *ngSwitchCase="true">
           <h2 >{{secondOne.name}} details 2!</h2>
